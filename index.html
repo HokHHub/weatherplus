@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <header class="header">
+            <div class="container">
+                <div class="header__switchtheme switchtheme">
+                    <svg class="switchtheme__tumbler" width="100" height="39" viewBox="0 0 100 39" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="38.6076" rx="19.3038" fill="#D9D9D9" />
+                    </svg>
+                    <svg class="switchtheme__ellipse" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        viewBox="0 0 30 30" fill="none">
+                        <circle cx="15" cy="15" r="15" fill="#111111" />
+                    </svg>
+                    <p class="switchtheme__mode">Dark Mode</p>
+                </div>
+
+                <div class="header__search search">
+                    <form class="search__form form" action="POST">
+                        <img class="form__img" src="/icons/white/search.png" alt="">
+                        <input class="form__input" type="text" placeholder="Search for your preffered city...">
+                    </form>
+                </div>
+
+                <button class="header__button button">
+                    <img class="button__img" src="./icons/black/location.png" alt="">
+                    <p>Current Location</p>
+                </button>
+            </div>
+        </header>
+        <div class="content">
+            <div class="container">
+                <div class="main">
+                    <div class="main__information information">
+                        <p class="information__city">Athens</p>
+                        <p class="information__time">09:03</p>
+                        <p class="information__date">Thursday, 31 Aug</p>
+                    </div>
+                    <div class="main__weather weather">
+                        <div class="weather__temp-block">
+                            <p class="weather__temp">24°C</p>
+                            <p class="weather__feel">Feels like: <span class="weather__feel_temp">22°C</span></p>
+                        </div>
+
+                        <div class="weather__sun">
+                            <div class="weather__sunrise">
+                                <img class="weather__sun_ico" src="./icons/white/sunrise.png" alt="">
+                                <div class="weather__sunrise_text">
+                                    <p class="weather__sun_text">Sunrise</p>
+                                    <p class="weather__sun_subtext">06:37 AM</p>
+                                </div>
+                            </div>
+                            <div class="weather__sunset">
+                                <img class="weather__sun_ico" src="./icons/white/sunset.png" alt="">
+                                <div class="weather__sunset_text">
+                                    <p class="weather__sun_text">Sunset</p>
+                                    <p class="weather__sun_subtext">20:37 AM</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="weather__simple">
+                            <img class="weather__simple_ico" src="./icons/clear.png" alt="">
+                            <p class="weather__simple_text">Sunny</p>
+                        </div>
+
+                        <div class="weather__more more">
+                            <div class="more__block">
+                                <img class="more__img_humidity" src="./icons/white/humidity.png" alt="">
+                                <p class="more__text">41%</p>
+                                <p class="more__about">Humidity</p>
+                            </div>
+
+                            <div class="more__block">
+                                <img class="more__img_wind" src="./icons/white/wind.png" alt="">
+                                <p class="more__text">997hPa</p>
+                                <p class="more__about">Wind Speed</p>
+                            </div>
+
+                            <div class="more__block">
+                                <img class="more__img_pressure" src="./icons/white/pressure.png" alt="">
+                                <p class="more__text">2km/h</p>
+                                <p class="more__about">Pressure</p>
+                            </div>
+
+                            <div class="more__block">
+                                <img class="more__img_uv" src="./icons/white/uv.png" alt="">
+                                <p class="more__text">8</p>
+                                <p class="more__about">UV</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additionally">
+                    <div class="additionally__forecast forecast">
+                        <p class="forecast__text">5 Days Forecast:</p>
+                        <div class="forecast__block block first">
+                            <img class="block__img" src="./icons/clouds.png" alt="">
+                            <p class="block__text">20°C</p>
+                            <p class="block__date">Friday, 1 Sep</p>
+                        </div>
+
+                        <div class="forecast__block block second">
+                            <img class="block__img" src="./icons/clouds.png" alt="">
+                            <p class="block__text">20°C</p>
+                            <p class="block__date">Friday, 2 Sep</p>
+
+                        </div>
+
+                        <div class="forecast__block block third">
+                            <img class="block__img" src="./icons/clouds.png" alt="">
+                            <p class="block__text">20°C</p>
+                            <p class="block__date">Friday, 3 Sep</p>
+
+                        </div>
+
+                        <div class="forecast__block block fourth">
+                            <img class="block__img" src="./icons/clouds.png" alt="">
+                            <p class="block__text">20°C</p>
+                            <p class="block__date">Friday, 4 Sep</p>
+
+                        </div>
+
+                        <div class="forecast__block block fiveth">
+                            <img class="block__img" src="./icons/clouds.png" alt="">
+                            <p class="block__text">20°C</p>
+                            <p class="block__date">Friday, 5 Sep</p>
+
+                        </div>
+                    </div>
+
+                    <div class="additionally__hourly hourly">
+                        <p class="hourly__text">Hourly Forecast:</p>
+                        <div class="hourly__blocks blocks">
+                            <div class="blocks__block block noon">
+                                <p class="block__hour">12:00</p>
+                                <img class="block__ico" src="./icons/hourlyClear.png" alt="">
+                                <p class="block__temp">26°C</p>
+                                <img class="block__navigate" src="./icons/navigation.png" alt="">
+                                <p class="block__wind">3km/h</p>
+                            </div>
+
+                            <div class="blocks__block block pm3">
+                                <p class="block__hour">12:00</p>
+                                <img class="block__ico" src="./icons/hourlyClear.png" alt="">
+                                <p class="block__temp">26°C</p>
+                                <img class="block__navigate" src="./icons/navigation.png" alt="">
+                                <p class="block__wind">3km/h</p>
+                            </div>
+
+                            <div class="blocks__block block pm6">
+                                <p class="block__hour">12:00</p>
+                                <img class="block__ico" src="./icons/hourlyClear.png" alt="">
+                                <p class="block__temp">26°C</p>
+                                <img class="block__navigate" src="./icons/navigation.png" alt="">
+                                <p class="block__wind">3km/h</p>
+                            </div>
+
+                            <div class="blocks__block block pm9">
+                                <p class="block__hour">12:00</p>
+                                <img class="block__ico" src="./icons/hourlyClear.png" alt="">
+                                <p class="block__temp">26°C</p>
+                                <img class="block__navigate" src="./icons/navigation.png" alt="">
+                                <p class="block__wind">3km/h</p>
+                            </div>
+
+                            <div class="blocks__block block midnight">
+                                <p class="block__hour">12:00</p>
+                                <img class="block__ico" src="./icons/hourlyClear.png" alt="">
+                                <p class="block__temp">26°C</p>
+                                <img class="block__navigate" src="./icons/navigation.png" alt="">
+                                <p class="block__wind">3km/h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

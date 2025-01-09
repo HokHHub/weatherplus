@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(/fonts/Poppins.ttf);
+}
+
+body {
+    background: linear-gradient(89deg, #353434 0%, rgba(158, 158, 158, 0.00) 71.82%);
+    background-color: #272727;
+    transition: background-color 0.3s ease;
+}
+
+:root{
+    --theme-color: #444;
+    --textTheme-color: #FFF;
+    --rgbaTheme-color: rgba(255, 255, 255, 0.80);
+    --hourlyTheme-color: #373636;
+    --input-color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-theme {
+    background: linear-gradient(89deg, #353434 0%, rgba(158, 158, 158, 0.00) 71.82%);
+    background-color: #272727;
+}
+
+body.light-theme {
+    background: linear-gradient(87deg, #FFF 0.28%, rgba(70, 97, 115, 0.00) 178.65%);
+    background-color: black;
+}
+
+

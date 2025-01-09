@@ -1,0 +1,138 @@
+.borderBlack {
+    border: 1px solid #000;
+}
+
+.borderBlackRadius {
+    border: 1px solid #000;
+    border-radius: 60px;
+}
+
+.header {
+    display: flex;
+
+    &__switchtheme {
+        padding-top: 63px;
+        width: fit-content;
+
+    }
+
+    &__search {
+        position: absolute;
+        width: 803px;
+        height: 62px;
+        flex-shrink: 0;
+        border-radius: 40px;
+        background: var(--theme-color);
+        box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+        left: 259px;
+        top: 63px;
+
+        &.dark-theme {
+            position: absolute;
+            width: 803px;
+            height: 62px;
+            flex-shrink: 0;
+            border-radius: 40px;
+            background: var(--theme-color);
+            box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+            left: 259px;
+            top: 63px;
+        }
+
+        &.light-theme {
+            position: absolute;
+            width: 803px;
+            height: 62px;
+            flex-shrink: 0;
+            left: 259px;
+            top: 63px;
+            border-radius: 40px;
+            border: 1px solid #000;
+            background: var(--theme-color);
+            box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+        }
+
+    }
+
+
+    &__button {
+        position: absolute;
+        left: 1143px;
+        width: 292px;
+        height: 62px;
+        flex-shrink: 0;
+        border-radius: 40px;
+        background: #4CBB17;
+        border: 0;
+        box-shadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+        color: rgba(255, 255, 255, 0.80);
+        text-align: center;
+        font-family: 'Poppins';
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        top: 63px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.switchtheme {
+    &__ellipse {
+        position: absolute;
+        top: 76px;
+        left: 144px;
+        transition: left 0.3s linear;
+        cursor: pointer;
+
+        &_light {
+            left: 100px
+        }
+    }
+
+
+    &__mode {
+        color: var(--textTheme-color);
+        font-family: 'Poppins';
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 800;
+        line-height: normal;
+        margin-top: 5.39px;
+    }
+}
+
+.form {
+    &__input {
+        position: absolute;
+        background-color: transparent;
+        color: var(--input-color);
+        font-family: 'Poppins';
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border: 0;
+        margin-left: 29px;
+        margin-top: 20px;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__img {
+        margin-top: 8px;
+        margin-left: 33px;
+        cursor: pointer;
+    }
+}
+
+.button {
+    &__img {
+        margin-left: 25px;
+        margin-right: 4px;
+    }
+}
