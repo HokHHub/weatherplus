@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Poppins";
-  src: url(/fonts/Poppins.ttf);
+  src: url(fonts/Poppins.ttf);
 }
 body {
   background: linear-gradient(89deg, #353434 0%, rgba(158, 158, 158, 0) 71.82%);

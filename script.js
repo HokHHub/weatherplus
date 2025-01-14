@@ -77,7 +77,6 @@ function enableLocation(data) {
     toLocation.addEventListener('click', () => {
         let lat = data.coords.latitude
         let lon = data.coords.longitude
-        // console.log(lat, lon);
 
         getWeatherByCoords(lat, lon)
         getCityNameByCoords(lat, lon)
@@ -101,23 +100,19 @@ function convertUNIX(dt, sunrise, sunset, timezone) {
     date = new Date(now_utc);
 
     let utc = date.toISOString();
-    // console.log(utc);
 
     let hour = utc.substring(11, 13)
     let minuts = utc.substring(14, 16)
     hour = Number(hour)
     let tet = Number(hour) + Number(timezone / 60 / 60)
-    // console.log(hour + (timezone/60/60),String(tet)[1], 'HOUR');
     if ((hour + (timezone / 60 / 60)) >= 24) {
         hour -= 24
         time.innerText = ('0' + Number(hour) + (timezone / 60 / 60)) + ':' + minuts
     } else if (String(tet)[1] == undefined) {
-        // console.log('HHHH');
         time.innerText = ('0' + (Number(hour) + (timezone / 60 / 60))) + ':' + minuts
     } else {
         time.innerText = (Number(hour) + (timezone / 60 / 60)) + ':' + minuts
     }
-    // console.log(hour, minuts);
 
 
     let dateSunrise = new Date(sunrise * 1000)
@@ -175,9 +170,6 @@ function renderForecast(data) {
         let index = 0
         while (index <= 4) {
             
-            // let date = new Date(data.list[index].dt * 1000)
-            // let hours = date.getHours()
-            console.log(data);
 
             blockHour[index].innerText = (data.list[index].dt_txt).substring(11, 16)
             blockWind[index].innerText = Math.round(data.list[index].wind.speed, 0) + 'km/h'
@@ -197,12 +189,10 @@ function renderForecast(data) {
             while (index <= 4) {
     
                 let hour = blockHour[index].innerHTML.substring(0, 2)
-                console.log(hour);
     
                 if (hour[0] == '0') {
     
                     hour = hour.substring(1, 2)
-                    console.log(hour);
                     hour = Number(hour)
     
                     if (hour <= 18 && hour >= 6) {
@@ -225,10 +215,8 @@ function renderForecast(data) {
         while (index <= 40) {
             blockText[i].innerText = Math.round(data.list[index].main.temp, 0) + '°C'
             let today = new Date(data.list[index].dt * 1000);
-            // console.log(today);
 
             today = String(today)
-            // console.log(today);
 
             blockImg[i].setAttribute('src', `https://openweathermap.org/img/wn/${data.list[index].weather[0].icon}@2x.png`)
             let days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -268,7 +256,6 @@ function renderForecast(data) {
 async function getCityNameByCoords(lat, lon) {
     const geo = await fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&appid=${api}`)
     const data = await geo.json()
-    // console.log(data);
 
     getForecastWeatherByCityName(data[0].name)
 }
@@ -276,8 +263,6 @@ async function getCityNameByCoords(lat, lon) {
 async function getWeatherByCityName(cityName) {
     const geo = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${api}`)
     const data = await geo.json()
-    // console.log(data);
-    // console.log(data);
     renderContent(data)
 
 }
@@ -294,10 +279,8 @@ async function getCityByIP() {
 }
 
 async function getForecastWeatherByCityName(cityName) {
-    // console.log('forecast');
     const geo = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&cnt=40&appid=${api}`)
     const data = await geo.json()
-    // console.log(data);
 
     renderForecast(data)
 
@@ -313,80 +296,15 @@ async function getWeatherByCoords(lat, lon) {
 switchTheme.addEventListener('click', () => {
     let currentTheme = document.body.className;
     if (currentTheme === 'light-theme') {
-        document.body.className = 'dark-theme';
-        document.documentElement.style.setProperty('--theme-color', '#444');
-        document.documentElement.style.setProperty('--textTheme-color', '#FFF');
-        document.documentElement.style.setProperty('--rgbaTheme-color', 'rgba(255, 255, 255, 0.80)');
-        document.documentElement.style.setProperty('--hourlyTheme-color', '#373636');
-        document.documentElement.style.setProperty('--input-color', 'rgba(255, 255, 255, 0.6)');
-        switchText.innerText = 'Dark Mode'
-
-        hedSearch.classList.remove('borderBlack')
-        tumbler.classList.remove('borderBlackRadius')
-
-        let index = 0
-        while (index <= 4) {
-            block[index].classList.remove('dark')
-            block[index].classList.remove('orange')
-            index += 1
-        }
-
-        ellipse.classList.remove('switchtheme__ellipse_light')
-
-        humidity.setAttribute('src', './icons/white/humidity.png')
-        wind.setAttribute('src', './icons/white/wind.png')
-        pressure.setAttribute('src', './icons/white/pressure.png')
-        uv.setAttribute('src', './icons/white/uv.png')
-        sunriseAndSunset[0].setAttribute('src', './icons/white/sunrise.png')
-        sunriseAndSunset[1].setAttribute('src', './icons/white/sunset.png')
-
+        toDark()
 
     } else {
-        document.body.className = 'light-theme';
-        document.documentElement.style.setProperty('--theme-color', '#D9D9D9');
-        document.documentElement.style.setProperty('--textTheme-color', '#292929');
-        document.documentElement.style.setProperty('--rgbaTheme-color', '#292929');
-        document.documentElement.style.setProperty('--input-color', '#292929');
-        switchText.innerText = 'Light Mode'
-
-        hedSearch.classList.add('borderBlack')
-        tumbler.classList.add('borderBlackRadius')
-
-
-        ellipse.classList.add('switchtheme__ellipse_light')
-        humidity.setAttribute('src', './icons/black/humidity.png')
-        wind.setAttribute('src', './icons/black/wind.png')
-        pressure.setAttribute('src', './icons/black/pressure.png')
-        uv.setAttribute('src', './icons/black/uv.png')
-        sunriseAndSunset[0].setAttribute('src', './icons/black/sunrise.png')
-        sunriseAndSunset[1].setAttribute('src', './icons/black/sunset.png')
-
-
-        let index = 0
-        while (index <= 4) {
-            let hour = blockHour[index].innerHTML.substring(0, 2)
-            if (hour[0] == '0') {
-                hour = hour.substring(1, 2)
-                // console.log(hour);
-
-                if (hour <= 18 && hour >= 6) {
-                    // console.log('1');
-                    block[index].classList.add('orange')
-                } else {
-                    // console.log('2');
-                    block[index].classList.add('dark')
-                }
-            } else {
-                // console.log('22');
-                block[index].classList.add('dark')
-            }
-            index += 1
+        toLight()
         }
     }
-})
+)
 
-if (isDark) {
-
+function toDark() {
     document.body.className = 'dark-theme';
     document.documentElement.style.setProperty('--theme-color', '#444');
     document.documentElement.style.setProperty('--textTheme-color', '#FFF');
@@ -413,8 +331,9 @@ if (isDark) {
     uv.setAttribute('src', './icons/white/uv.png')
     sunriseAndSunset[0].setAttribute('src', './icons/white/sunrise.png')
     sunriseAndSunset[1].setAttribute('src', './icons/white/sunset.png')
-} else if (!isDark) {
+}
 
+function toLight() {
     document.body.className = 'light-theme';
     document.documentElement.style.setProperty('--theme-color', '#D9D9D9');
     document.documentElement.style.setProperty('--textTheme-color', '#292929');
@@ -433,30 +352,10 @@ if (isDark) {
     uv.setAttribute('src', './icons/black/uv.png')
     sunriseAndSunset[0].setAttribute('src', './icons/black/sunrise.png')
     sunriseAndSunset[1].setAttribute('src', './icons/black/sunset.png')
-
-
-    let index = 0
-    // while (index <= 4) {
-
-    //     let hour = blockHour[index].innerHTML.substring(0, 2)
-    //     console.log(hour);
-
-    //     if (hour[0] == '0') {
-
-    //         hour = hour.substring(1, 2)
-    //         console.log(hour);
-    //         hour = Number(hour)
-
-    //         if (hour <= 18 && hour >= 6) {
-    //             block[index].classList.add('orange')
-    //         } else {
-    //             block[index].classList.add('dark')
-    //         }
-    //     } else if (hour <= 18 && hour >= 6) {
-    //         block[index].classList.add('orange')
-    //     } else {
-    //         block[index].classList.add('dark')
-    //     }
-    //     index += 1
-    // }
+}
+ 
+if (isDark) {
+   toDark()
+} else if (!isDark) {
+    toLight()
 }
